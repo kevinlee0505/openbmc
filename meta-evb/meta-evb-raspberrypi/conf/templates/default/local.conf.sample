@@ -1,4 +1,4 @@
-MACHINE ??= "raspberrypi"
+MACHINE ??= "raspberrypi2"
 DISTRO ?= "openbmc-phosphor"
 PACKAGE_CLASSES ?= "package_ipk"
 SANITY_TESTED_DISTROS:append ?= " *"
@@ -16,8 +16,11 @@ BB_DISKMON_DIRS ??= "\
     HALT,/tmp,10M,1K"
 CONF_VERSION = "2"
 
+LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
+
 # Set the root password to '0penBmc'
 # Defaults from meta-phosphor/conf/distro/include/phosphor-defaults.inc
 
+require conf/distro/include/phosphor-mmc.inc
 require conf/machine/include/obmc-bsp-common.inc
 require conf/machine/include/obmc-evb-common.inc
